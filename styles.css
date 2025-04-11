@@ -266,10 +266,21 @@ section {
 .shape {
   width: 400px;
   height: 400px;
+  position: relative; /* 為了讓內部圖片能用 absolute */
   background: var(--primary-color);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   animation: morphing 10s ease-in-out infinite;
   opacity: 0.1;
+  overflow: hidden; /* 這樣圖片才會被限制在 shape 裡面 */
+}
+
+.shape img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持比例並填滿容器 */
+  top: 0;
+  left: 0;
 }
 
 @keyframes morphing {
